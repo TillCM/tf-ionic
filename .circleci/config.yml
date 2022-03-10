@@ -44,7 +44,7 @@ jobs:
           path: ~/dev/ionic-test
           
       - attach_workspace:
-          at: ~/demo-react-native
+          at: ~/dev/ionic-test
 
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}   
@@ -59,7 +59,7 @@ jobs:
          name: install-packages
          command: | 
          
-          sudo usermod -a -G docker $USER
+          # sudo usermod -a -G docker $USER
           npm install      
 
       - run:
