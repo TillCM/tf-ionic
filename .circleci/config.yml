@@ -87,7 +87,7 @@ jobs:
           name: Run Lindt Test
           command: |
             find .
-             cd android && sudo ./gradlew lint test    
+             cd android && ./gradlew lint test    
 
       - store_artifacts:
           path: android/app/build/reports
