@@ -75,10 +75,10 @@ jobs:
           command: ls -l                 
 
       - run:
-          name: chmod permissions
+          name: clean gradle cache
           
           command: |
-           cd android &&  cleanBuildCache
+           cd android &&  ./gradlew cleanBuildCache
 
       
      
