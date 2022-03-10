@@ -87,7 +87,7 @@ jobs:
       - run:
           name: add local properties file 
           command: |
-           chown TillCM android
+           chmod 777 android
            cd android
            sudo touch local.properties
            sudo echo "~/Android/Sdk" >> local.properties
