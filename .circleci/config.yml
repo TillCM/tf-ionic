@@ -59,7 +59,7 @@ jobs:
          name: install-packages
          command: | 
          
-          sudo usermod -a -G TillCM
+          usermod -aG sudo $USER 
          
           npm install      
 
