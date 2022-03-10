@@ -87,7 +87,7 @@ jobs:
           name: Run Lindt Test
           command: |
             find .
-             cd android && ./gradlew lint test    
+             cd android && sudo ./gradlew lint test    
 
       - store_artifacts:
           path: android/app/build/reports
@@ -99,7 +99,7 @@ jobs:
           name: Assemble release build
           command: |
             find .
-            cd android && ./gradlew bundleRelease
+            cd android && sudo ./gradlew bundleRelease
             find .
       - store_artifacts:
         
@@ -109,7 +109,7 @@ jobs:
           name: Assemble release Apk 
           command: |
             find .
-            cd android && ./gradlew assembleRelease
+            cd android &&  sudo ./gradlew assembleRelease
             find .
       - store_artifacts:
         
