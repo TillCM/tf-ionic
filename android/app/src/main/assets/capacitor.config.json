@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "TeamFu",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
