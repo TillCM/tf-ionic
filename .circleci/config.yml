@@ -35,33 +35,31 @@ jobs:
           path: test-results
 
   android-build-and-test:
-    working_directory: ~/dev/ionic-test
-
-    
+    working_directory: ~/demo-react-native
     docker:
-      - image: cimg/android:2022.01.1-node
+      - image: circleci/android:api-29-node
     steps:
       - checkout:
-         path: ~/dev/ionic-test
+          path: ~/demo-react-native
           
       - attach_workspace:
-         at: ~/dev/ionic-test
-
-      - run:
-         name: install-packages
-         command: | 
-         
-          npm install
+          at: ~/demo-react-native
 
       - restore_cache:
-         key: node-v1-{{ checksum "package.json" }}-{{ arch }}   
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}   
 
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
-            - node_modules
+            - node_modules      
 
+      - run:
+          name: chmod permissions
+          
+          command: |
+           cd android &&  chmod +x ./gradlew
 
+      
       - run:
           name: install ionic cli
           command: |
@@ -77,55 +75,41 @@ jobs:
             sudo ionic cap sync
       - run:
           name: list files
-          command: ls -l    
-
-      - run:
-          name: chmod permissions
-          
-          command: | 
-           cd android && sudo chmod +x ./gradlew
-           ls -l
-
-      - run:
-          name: Download Dependencies
-
-          command:  cd android && sudo ./gradlew androidDependencies
-
-    
+          command: ls -l       
            
       - run:
-         name: Run Lindt Test
-         command: |
-            export ANDROID_HOME=$HOME/Android/Sdk
-            export PATH=$PATH:$ANDROID_HOME/tools
-            export PATH=$PATH:$ANDROID_HOME/platform-tools
-            export ANDROID_SDK_ROOT=$HOME/Android/Sdk
-            env
-            cd android && sudo ./gradlew lint test    
+          name: Run Lindt Test
+          command: |
+            find .
+             cd android && ./gradlew lint test    
+
       - store_artifacts:
-           path: android/app/build/reports
-           destination: reports
+          path: android/app/build/reports
+          destination: reports
       - store_test_results:
-           path: android/app/build/test-results   
+          path: android/app/build/test-results   
 
       - run:
           name: Assemble release build
           command: |
-           cd android && sudo  ./gradlew assembleRelease --no-daemon
-       
+            find .
+            cd android && ./gradlew bundleRelease
+            find .
       - store_artifacts:
         
-          path: platforms/android/app/build/outputs/apk/debug
+          path: android/app/build/outputs/bundle/release
       
       - run:
           name: Assemble release Apk 
           command: |
             find .
-            cd android && sudo  ./gradlew assembleRelease --no-daemon
+            cd android && ./gradlew assembleRelease
             find .
       - store_artifacts:
         
-          path: android/app/build/outputs/apk/release 
+          path: android/app/build/outputs/apk/release
+
+ 
 
 workflows:
   ionic-test:
