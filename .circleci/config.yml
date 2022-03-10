@@ -40,7 +40,7 @@ jobs:
       - image: circleci/android:api-29-node
     steps:
       - checkout:
-          path: ~/demo-react-native
+          path: ~/dev/ionic-test
           
       - attach_workspace:
           at: ~/demo-react-native
