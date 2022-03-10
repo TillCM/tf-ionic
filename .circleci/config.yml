@@ -37,7 +37,8 @@ jobs:
   android-build-and-test:
     working_directory: ~/dev/ionic-test
     docker:
-      - image: cimg/android:2022.01.1-node
+      - image: cimg/android:2022.03.1
+   
     steps:
       - checkout:
           path: ~/dev/ionic-test
@@ -63,6 +64,8 @@ jobs:
       - run:
           name: install ionic cli
           command: |
+
+          
             sudo npm install -g @ionic/cli
             sudo which ionic
             sudo ionic build
@@ -74,11 +77,7 @@ jobs:
           name: list files
           command: ls -l                 
 
-      - run:
-          name: clean gradle cache
-          
-          command: |
-           cd android &&  ./gradlew cleanBuildCache
+  
 
       
      
