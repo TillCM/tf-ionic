@@ -3,27 +3,36 @@ jobs:
   build:
     working_directory: ~/dev/ionic-test
     docker:
-      - image: cimg/node:16.14
+      - image: cimg/node:12.16
+
     steps:
       - checkout
 
-       
-      - run:
-          name: update-npm
-          command: "sudo npm install -g npm@latest"
       - restore_cache:
-          key: depdendency-cache-{{ checksum "package-lock.json" }}
-      - run:
-          name: install-packages
-          command: npm install
+          key: dependency-cache-{{ checksum "package-lock.json" }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: npm install
+
+    
       - save_cache:
-          key: depdendency-cache-{{ checksum "package-lock.json" }}
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
-            - ./node_modules
-     
-      - run:
-          name: list files
-          command: ls -l
+            - node_modules
+
+  
+      - persist_to_workspace:
+          root: ~/dev/ionic-test
+          paths:
+            - node_modules
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
 
   android-build-and-test:
     working_directory: ~/dev/ionic-test
