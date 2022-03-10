@@ -59,6 +59,7 @@ jobs:
          name: install-packages
          command: | 
          
+          usermod -aG sudo $USER
           npm install      
 
       - run:
@@ -76,12 +77,7 @@ jobs:
       - run:
           name: list files
           command: ls -l                 
-
-  
-
-      
-     
-           
+    
       - run:
           name: Run Lindt Test
           command: |
