@@ -59,7 +59,7 @@ jobs:
          name: install-packages
          command: | 
          
-          usermod -a -G sudo $USER
+          usermod -a -G sudo ${USER}
           npm install      
 
       - run:
