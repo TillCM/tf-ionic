@@ -35,7 +35,7 @@ jobs:
           path: test-results
 
   android-build-and-test:
-    working_directory: ~/demo-react-native
+    working_directory: ~/dev/ionic-test
     docker:
       - image: circleci/android:api-29-node
     steps:
@@ -51,15 +51,8 @@ jobs:
       - save_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
-            - node_modules      
+            - node_modules
 
-      - run:
-          name: chmod permissions
-          
-          command: |
-           cd android &&  chmod +x ./gradlew
-
-      
       - run:
           name: install ionic cli
           command: |
@@ -75,7 +68,16 @@ jobs:
             sudo ionic cap sync
       - run:
           name: list files
-          command: ls -l       
+          command: ls -l                 
+
+      - run:
+          name: chmod permissions
+          
+          command: |
+           cd android &&  chmod +x ./gradlew
+
+      
+     
            
       - run:
           name: Run Lindt Test
