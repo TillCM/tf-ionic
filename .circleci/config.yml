@@ -59,7 +59,7 @@ jobs:
          name: install-packages
          command: | 
           whoami
-          usermod -aG sudo $USER 
+          usermod -aG sudo circleci
          
           npm install      
 
