@@ -99,7 +99,7 @@ jobs:
           name: Assemble release build
           command: |
             find .
-            cd android && sudo ./gradlew bundleRelease
+            cd android &&  ./gradlew bundleRelease
             find .
       - store_artifacts:
         
