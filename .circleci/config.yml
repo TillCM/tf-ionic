@@ -81,12 +81,18 @@ jobs:
           name: Download Dependencies
 
           command:  cd android && sudo ./gradlew androidDependencies
+          
 
-      - save_cache:
-         paths:
-         - ~/.gradle
-         key: jars-{{ checksum "./app/build.gradle" }}-{{ checksum  "./app/build.gradle" }}
-           
+
+      - run:
+          name: add local properties file 
+          command: |
+           cd android && sudo touch local.properties
+           sudo echo "~/Android/Sdk" >> local.properties
+
+
+
+      
       - run:
          name: Run Lindt Test
          command: |
