@@ -56,10 +56,7 @@ jobs:
       - run:
           name: install ionic cli
           command: |
-
-          
-           sudo npm install -g @ionic/cli
-         
+            sudo npm install -g @ionic/cli
             sudo which ionic
             sudo ionic build
             sudo ionic cap add android
