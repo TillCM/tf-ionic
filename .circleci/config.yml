@@ -74,11 +74,11 @@ jobs:
           name: list files
           command: ls -l                 
 
-      # - run:
-      #     name: chmod permissions
+      - run:
+          name: chmod permissions
           
-      #     command: |
-      #      cd android &&  chmod +x ./gradlew
+          command: |
+           cd android &&  cleanBuildCache
 
       
      
