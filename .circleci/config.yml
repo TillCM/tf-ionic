@@ -37,7 +37,7 @@ jobs:
   android-build-and-test:
     working_directory: ~/dev/ionic-test
     docker:
-      - image: circleci/android:api-29-node
+      - image: cimg/android:2022.01.1-node
     steps:
       - checkout:
           path: ~/dev/ionic-test
