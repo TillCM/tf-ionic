@@ -88,7 +88,7 @@ jobs:
           name: Run Lindt Test
           command: |
             cd $HOME
-            cd dev
+            cd android-sdk
             ls -l
             sudo  chmod -R 777 $HOME/.gradle/caches
             cd android && ./gradlew lint test    
