@@ -77,7 +77,12 @@ jobs:
             sudo ionic cap sync
       - run:
           name: list files
-          command: ls -l                 
+          command: ls -l    
+
+      - run:
+          name: Clean Gradle Cache
+          command: rm -r $HOME/.gradle/caches/   
+
     
       - run:
           name: Run Lindt Test
