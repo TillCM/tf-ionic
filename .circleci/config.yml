@@ -94,7 +94,7 @@ jobs:
             cd $HOME
             cd android-sdk
             ls -l
-            sudo  chmod -R 777 $HOME/.gradle/caches
+            # sudo  chmod -R 777 $HOME/.gradle/caches
             cd android &&  sudo ./gradlew lint test    
 
       - store_artifacts:
