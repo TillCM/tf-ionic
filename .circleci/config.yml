@@ -91,10 +91,6 @@ jobs:
             export PATH=$PATH:$ANDROID_HOME/tools
             export PATH=$PATH:$ANDROID_HOME/platform-tools
             export ANDROID_SDK_ROOT=$HOME/android-sdk
-            cd $HOME
-            cd android-sdk
-            ls -l
-            # sudo  chmod -R 777 $HOME/.gradle/caches
             cd android &&  sudo ./gradlew lint test    
 
       - store_artifacts:
