@@ -81,7 +81,9 @@ jobs:
 
       - run:
           name: Clean Gradle Cache
-          command: rm -rf ~/.gradle/caches/   
+          command: | 
+           rm -rf ~/.gradle/caches/  
+           cd android  && ./gradlew clean
 
     
       - run:
