@@ -79,11 +79,11 @@ jobs:
           name: list files
           command: ls -l    
 
-      - run:
-          name: Clean Gradle Cache
-          command: | 
-           rm -rf ~/.gradle/caches/  
-           cd android  && ./gradlew clean
+      # - run:
+      #     name: Clean Gradle Cache
+      #     command: | 
+      #      rm -rf ~/.gradle/caches/  
+      #      cd android  && ./gradlew clean
 
     
       - run:
