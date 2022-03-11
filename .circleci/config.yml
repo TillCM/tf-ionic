@@ -104,6 +104,7 @@ jobs:
           name: Assemble release build
           command: |
             find .
+            sudo chmod -R 777 android
             cd android &&  ./gradlew bundleRelease
             find .
       - store_artifacts:
@@ -114,6 +115,7 @@ jobs:
           name: Assemble release Apk 
           command: |
             find .
+            sudo chmod -R 777 android
             cd android &&  sudo ./gradlew assembleRelease
             find .
       - store_artifacts:
