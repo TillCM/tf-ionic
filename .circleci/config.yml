@@ -89,7 +89,7 @@ jobs:
       - run:
           name: Run Lindt Test
           command: |
-            sudo  chmod -R 777 ~/.gradle/caches
+            sudo  chmod -R 777 $HOME/.gradle/caches
              cd android && ./gradlew lint test    
 
       - store_artifacts:
