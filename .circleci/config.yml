@@ -116,7 +116,7 @@ jobs:
           command: |
             find .
             sudo chmod -R 777 android
-            cd android &&  sudo ./gradlew assembleRelease
+            cd android &&   ./gradlew assembleRelease
             find .
       - store_artifacts:
         
